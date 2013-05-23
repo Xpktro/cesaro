@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Curva de Cesaro</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style type="text/css">.container{margin: 0 auto;}</style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="span10 offset1">
+                <h3 class="text-center">Curva de Cesaro</h3>
+                <div class="well">
+                    <div class="row-fluid">
+                        <div class="span3">
+                            <label for="degress">Grados</label>
+                            <input class="input-block-level" type="text" id="degrees" name="degrees" value="85" />
+                        </div>
+                        <div class="span3">
+                            <label for="iterations">Iteraciones</label>
+                            <input class="input-block-level" type="text" id="iterations" name="iterations" value="3" />
+                        </div>
+                        <div class="span3">
+                            <label for="lenght">Factor de longitud de línea</label>
+                            <input class="input-block-level" type="text" id="length" name="length" value="1.5" />
+                        </div>
+                        <div class="span3">
+                            <label>&nbsp;</label>
+                            <button id="go" class=" btn btn-primary btn-block" onclick="draw();">Dibujar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span10 offset1">
+                <canvas id="canvas" width="780" height="400" style="background: #fff;">
+                </canvas>
+                <div id="result"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script src="pen.js"></script>
+    <script src="cesaro.js"></script>
+    <script type="text/javascript">
+        function draw() {
+            degrees = document.getElementById('degrees').value;
+            iterations = document.getElementById('iterations').value;
+            length = document.getElementById('length').value;
+            element = document.getElementById('canvas');
+            cesaro = new Cesaro(element, parseFloat(degrees), parseInt(iterations), parseFloat(length));
+            document.getElementById('result').innerHTML = '<pre>' + cesaro.string.join('') + '</pre>';
+        }
+    </script>
+</body>
+</html>
